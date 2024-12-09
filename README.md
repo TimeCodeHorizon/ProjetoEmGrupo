@@ -117,3 +117,61 @@ Esses atributos fornecem informações essenciais para o controle detalhado das 
 - [RBAC versus ABAC: qual você deve usar?](https://www.keepersecurity.com/blog/pt-br/2024/10/28/rbac-vs-abac-which-should-you-use/#:~:text=A%20diferen%C3%A7a%20mais%20%C3%B3bvia%20entre,nos%20atributos%20de%20um%20usu%C3%A1rio.)
 - [Role-based access control (RBAC) vs. Attribute-based access control (ABAC)](https://www.youtube.com/watch?v=rvZ35YW4t5k)
 
+
+
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id                        Int           @id @default(autoincrement())
+  nome                      String
+  email                     String        @unique
+  senha                     String
+  telefone                  String
+  ativo                     Boolean
+  tokenRecuperacaoSenha     String    // Token temporário para recuperação
+  expiraTokenRecuperacao    DateTime
+  doisFatoresAtivo          Boolean   // Indica se 2FA está ativo
+  imagemPerfil              String?    // URL da imagem de perfil
+  criadoEm                  DateTime
+
+  perfis                    Perfil[]   // Relação com perfis
+
+  @@map("usuarios")
+}
+
+model Perfil {
+  id          Int           @id @default(autoincrement())
+  nome        String
+  descricao   String
+  ativo       Boolean
+  criadoEm    DateTime
+  
+  usuarios    Usuario[]    // Relação com Usuário
+  permissoes  Permissao[]   // Relação com Permissões
+    
+  
+
+   @@map("perfis")
+}
+
+model Permissao {
+  id          Int           @id @default(autoincrement())
+  nome        String
+  descricao   String?
+  ativo       Boolean
+  criadoEm    DateTime
+
+  perfis       Perfil[]   // Relação com Perfil
+
+  @@map("permissoes")
+}

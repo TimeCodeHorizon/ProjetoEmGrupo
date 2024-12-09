@@ -5,9 +5,7 @@ import RepositorioPermissao from "../provider/RepositorioPermissao";
 export default class ObterTodosPermissao implements CasoDeUso<void, Permissao[]>{
     
     constructor(
-
         private readonly repo: RepositorioPermissao // Repositório de Permissao
-        
     ){}
     
     async executar(entrada: void): Promise<Permissao[]> {

@@ -3,13 +3,13 @@ import Permissao from "../model/Permissao";
 import RepositorioPermissao from "../provider/RepositorioPermissao";
 
 type Entrada = {
-    id: string;
+    id: number;
     nome: string;
     descricao: string;
     ativo: boolean;
 }
 
-export default class AtualizarPerfil implements CasoDeUso<Entrada, Permissao>{
+export default class AtualizarPermissao implements CasoDeUso<Entrada, Permissao>{
     
     constructor(
         private readonly repo: RepositorioPermissao
@@ -21,11 +21,11 @@ export default class AtualizarPerfil implements CasoDeUso<Entrada, Permissao>{
         const Permissao = await this.repo.buscarPorId(id)
 
         if(!Permissao){
-            throw new Error('Permissão não encontrado')
+            throw new Error('Permissão não encontrada')
         }
 
         const permissaoAtualizado = { ...Permissao, nome: nome, descricao: descricao, ativo: ativo}
-        await this.repo.atualizar(permissaoAtualizado)
+        await this.repo.salvar(permissaoAtualizado)
         
         return permissaoAtualizado
     }

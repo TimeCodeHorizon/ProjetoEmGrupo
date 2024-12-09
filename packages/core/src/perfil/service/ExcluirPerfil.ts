@@ -1,9 +1,9 @@
 import CasoDeUso from "../../shared/CasoDeUso";
-import Perfil from "../model/perfil";
+import Perfil from "../model/Perfil";
 import RepositorioPerfil from "../provider/RepositorioPerfil";
 
 type Entrada = {
-    id: string; // Id do perfil a ser excluído
+    id: number; // Id do perfil a ser excluído
 }
 
 export default class ExcluirPerfil implements CasoDeUso<Entrada,void>{

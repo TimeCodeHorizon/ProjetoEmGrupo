@@ -1,9 +1,9 @@
-import Perfil from "../model/perfil";
+import Perfil from "../model/Perfil";
 
 export default interface RepositorioPerfil {
     salvar(perfil: Perfil): Promise<void>;
-    buscarPorId(id: string): Promise<Perfil | null>;
+    buscarPorId(id: number): Promise<Perfil | null>;
     listar(): Promise<Perfil[]>;
     atualizar(perfil: Perfil): Promise<void>;
-    remover(id: string): Promise<void>;
+    remover(id: number): Promise<void>;
 }

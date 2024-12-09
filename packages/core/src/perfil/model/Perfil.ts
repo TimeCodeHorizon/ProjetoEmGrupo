@@ -1,7 +1,7 @@
 import { Permissao } from "../../permissao";
 
 export default interface Perfil {
-    id: string;
+    id: number;
     nome: string;
     descricao?: string;
     permissoes?: Permissao[];           // Relação com permissões

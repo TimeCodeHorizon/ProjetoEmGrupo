@@ -1,0 +1,37 @@
+### 
+GET http://localhost:4000/permissoes
+
+### 
+GET http://localhost:4000/permissoes/2
+content-type: application/json
+
+### 
+POST http://localhost:4000/permissoes
+content-type: application/json
+
+{
+    "nome": "Editar Usuários",
+    "descricao": "Permissão para editar os Usuários",
+    "ativo": true,
+    "criadoEm": "2024-12-08T10:00:00Z"
+}
+
+### 
+DELETE http://localhost:4000/permissoes/2
+content-type: application/json
+
+{
+
+}
+
+### 
+PUT http://localhost:4000/permissoes
+content-type: application/json
+
+{
+    "id": 2,
+    "nome": "Editar Usuários",
+    "descricao": "Permissão para editar os Usuários",
+    "ativo": true,
+    "criadoEm": "2024-12-08T10:00:00Z"
+}

@@ -7,10 +7,12 @@ export default class RegistrarPermissao implements CasoDeUso<Permissao, void>{
     constructor(private readonly repo: RepositorioPermissao){}
     
     async executar(permissao: Permissao): Promise<void> {
-
-        const perfilExistente = await this.repo.buscarPorId(permissao.id);
+        let permissaoExistente;
         
-        if (perfilExistente) {
+        if(permissao.id)
+            permissaoExistente = await this.repo.buscarPorId(permissao.id);
+        
+        if (permissaoExistente) {
             throw new Error('Permissão já existe');
         }
         

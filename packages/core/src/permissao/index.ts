@@ -1,8 +1,10 @@
-import Permissao from "./model/Permissao.ts";
-import AtualizarPermissao from "./service/AtualizarPermissao.ts";
+import Permissao from "./model/Permissao";
+import RepositorioPermissao from "./provider/RepositorioPermissao";
+import AtualizarPermissao from "./service/AtualizarPermissao";
 import ExcluirPermissao from "./service/ExcluirPermissao";
-import ObterTodasPermissao from "./service/ObterTodasPermissao.ts";
-import RegistrarPermissao from "./service/RegistrarPermissao.ts";
+import ObterTodasPermissao from "./service/ObterTodasPermissao";
+import RegistrarPermissao from "./service/RegistrarPermissao";
+import ObterPermissao from "./service/ObterPermissao";
 
-export type { Permissao }
-export { AtualizarPermissao, ExcluirPermissao, ObterTodasPermissao, RegistrarPermissao };
+export type { Permissao, RepositorioPermissao }
+export { AtualizarPermissao, ExcluirPermissao, ObterTodasPermissao, RegistrarPermissao, ObterPermissao };

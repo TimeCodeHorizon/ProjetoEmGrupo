@@ -1,7 +1,8 @@
 import Usuario from "./model/Usuario";
-import LoginUsuario from "./service/LoginUsusario.ts";
-import RegistrarUsuario from "./service/RegistrarUsuario.ts";
+import RepositorioUsuario from "./provider/RepositorioUsuario";
+import LoginUsuario from "./service/LoginUsusario";
+import RegistrarUsuario from "./service/RegistrarUsuario";
 
 
-export type { Usuario }
+export type { Usuario, RepositorioUsuario }
 export { LoginUsuario, RegistrarUsuario };

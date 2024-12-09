@@ -1,5 +1,5 @@
 import CasoDeUso from '../../shared/CasoDeUso';
-import Perfil from '../model/perfil';
+import Perfil from '../model/Perfil';
 import RepositorioPerfil from '../provider/RepositorioPerfil';
 
 export default class RegistrarPerfil implements CasoDeUso<Perfil, void>{

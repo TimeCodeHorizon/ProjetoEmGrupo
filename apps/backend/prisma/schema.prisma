@@ -9,3 +9,48 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
+model Usuario {
+  id                        Int           @id @default(autoincrement())
+  nome                      String
+  email                     String        @unique
+  senha                     String
+  telefone                  String?
+  ativo                     Boolean
+  tokenRecuperacaoSenha     String    // Token temporário para recuperação
+  expiraTokenRecuperacao    DateTime
+  doisFatoresAtivo          Boolean   // Indica se 2FA está ativo
+  imagemPerfil              String?    // URL da imagem de perfil
+  criadoEm                  DateTime
+
+  perfis                    Perfil[]   // Relação com perfis
+
+  @@map("usuarios")
+}
+
+model Perfil {
+  id          Int           @id @default(autoincrement())
+  nome        String
+  descricao   String?
+  ativo       Boolean
+  criadoEm    DateTime
+  
+  usuarios    Usuario[]    // Relação com Usuário
+  permissoes  Permissao[]   // Relação com Permissões
+    
+  
+
+   @@map("perfis")
+}
+
+model Permissao {
+  id          Int           @id @default(autoincrement())
+  nome        String
+  descricao   String?
+  ativo       Boolean
+  criadoEm    DateTime
+
+  perfis       Perfil[]   // Relação com Perfil
+
+  @@map("permissoes")
+}

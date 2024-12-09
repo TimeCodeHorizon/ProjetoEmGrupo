@@ -1,5 +1,5 @@
 export default interface Permissao {
-    id: string;
+    id: number;
     nome: string;
     descricao: string;
     ativo: boolean;
